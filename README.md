@@ -1,65 +1,48 @@
-# CSV_Upload
-backend test CSV Upload
+This project is a Hospital an API for the doctors of a Hospital which has been allocated by the
+govt for testing and quarantine + well being of COVID-19 patients
 
-CSV_Upload is a web application that allows users to upload and parse CSV files. The application is built with Node.js and Express, and it provides a simple and user-friendly interface for managing CSV data.
+Installation
 
-## Installation
-To install CSV_Upload, please follow these steps:
+To run this application on your local machine, please follow these steps:
 
-Clone this repository using the following command:
-```
-$ git clone https://github.com/vipuldhurvey/CSV_Upload.git
-```
-Install the required dependencies using the following command:
-```
-$ npm install 
-```
-Start the application using the following command:
-```
-$ npm start 
-```
-Open the application in your web browser by visiting the following URL:
-```
-$ http://localhost:8000 
-```
+Clone this repository using the following command: https://github.com/ayush2342/Hospital-API.git
 
-## Features
-* CSV file upload: Users can upload CSV files with a simple web form.
-* CSV parsing: The application parses the CSV data and displays it in a table.
-* Searching: Users can search data in the table.
+Install the required dependencies using the following command: $ npm install
 
-## API Reference
-CSV_Upload provides a simple API for uploading and parsing CSV files. The API supports the following endpoints:
+Start the application using the following command: $ npm run start
 
-* POST /upload: Uploads a CSV file and parses the data.
-* GET /data: Returns the parsed CSV data as JSON.
+Open the application in your postman app by visiting the following URL: http://localhost:8000
 
-## Folder Structure
-```
-CSV_Upload/
-|── |assets/
-│   |      ├── css/
-│   │      |     ├── styles.css
-│   |      ├── js/
-│   |            ├── script.js
-│   ├── uploads/
-│   ├── index.html
-|   |
-├── routes/
-│   ├── csvRoutes.js
-|   |
-├── controllers/
-│   ├── csvController.js
-|   |
-├── models/
-│   ├── csvModel.js
-|   |
-├── .gitignore
-├── package.json
-├── README.md
+Features:
 
-```
-## Screenshots
-<img width="960" alt="Screenshot 2023-05-02 014605" src="https://user-images.githubusercontent.com/90390855/235523632-0b70279d-08a4-46dc-aa73-ac6ce6f1c147.png">
+- There can be 2 types of Users
 
-<img width="960" alt="Screenshot 2023-05-02 014704" src="https://user-images.githubusercontent.com/90390855/235523713-c6153e16-b915-4e2b-9f98-8d958cda3376.png">
+1. Doctors
+
+2. Patients
+
+- Doctors can log in
+- Each time a patient visits, the doctor will follow 2 steps
+ 
+1. Register the patient in the app (using phone number, if the patient already exists, just
+return the patient info in the API)
+
+2. After the checkup, create a Report
+- Patient Report will have the following fields
+
+1. Created by doctor
+
+2. Status - Can be either of: [Negative, Travelled-Quarantine, Symptoms-Quarantine,
+Positive-Admit]
+
+3. Date
+
+
+Routes:
+
+- /doctors/register → with username and password
+- /doctors/login → returns the JWT to be used
+- /patients/register
+- /patients/:id/create_report
+- /patients/:id/all_reports → List all the reports of a patient oldest to latest
+- /reports/:status → List all the reports of all the patients filtered by a specific status
